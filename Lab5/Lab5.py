@@ -12,6 +12,7 @@ def exp_x(x, n):
 
 y = 0
 def myOtherFunc(n):
+    """This function starts with the given n value and runs recursively until the n is 0"""
     global y
     if n > 0:
         y += ((-1)**(n+1)) / n
