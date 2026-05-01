@@ -9,16 +9,16 @@ class Vehicle:
         self.year = _year
 
     def __str__(self):
-        return "VID: ", self.vid, " Model: ", self.model, " Year: ", self.year
-
-    def __EQ__(self, other):
+        return f"{self.vid},{self.model},{self.year}"
+    
+    def __eq__(self, other):
         if self.vid == other.vid:
             return True
         else: return False
 
     def is_new(self,n):
         newYear = 2026 - n
-        if self.year > newYear & self.year < 2026 :
+        if self.year > newYear and self.year < 2026 :
             return True
         else: return False
 
@@ -27,7 +27,7 @@ class Car (Vehicle):
     doors = 4
 
     def __str__(self):
-        return "Car ", super.__str__(self), " Fuel type: ", self.fuel_type, " Doors: ", self.doors
+        return f"Car,{super().__str__()},{self.fuel_type},{self.doors}"
     
     def __init__(self, _vid, _model, _year, _fuel, _doors):
         super().__init__(_vid, _model, _year)
@@ -39,12 +39,12 @@ class Truck (Vehicle):
     axles = 0
 
     def __str__(self):
-        return "Truck ", super.__str__(self), " Max load: ", self.max_load, " Axles: ", self.axles
+        return f"Truck,{super().__str__()},{self.max_load},{self.axles}"
     
     def __init__(self, _vid, _model, _year, _load, _axles):
         super().__init__(_vid, _model, _year)
         self.load = _load
-        self.load = _axles
+        self.axles = _axles
     
 class Motorcyle (Vehicle):
     engine_cc = 0
@@ -52,7 +52,7 @@ class Motorcyle (Vehicle):
 
     def __str__(self):
     # super() fonksiyonunu çağırıp sonra metoduna erişmelisin
-        return f"Motorcyle {super().__str__()} Engine cc: {self.engine_cc} Type: {self.type}"
+        return f"Motorcyle,{super().__str__()},{self.engine_cc},{self.type}"
 
     def __init__(self, _vid, _model, _year, _engine, _type):
         super().__init__(_vid, _model, _year)
@@ -71,17 +71,17 @@ def load_fleet_from_file(filename):
     newList = []
     try:
         f = open(filename,encoding = 'utf-8')
-        lines = f.readlinez()
+        lines = f.readlines()
         for line in lines:
-            words = line.split()
+            words = line.split(",")
             if words[0] == "Car":    
-                newList.append(Car(words[1], words[2], words[3], words[4], words[5]))
+                newList.append(Car(words[1], words[2], int(words[3]), words[4], int(words[5])))
             elif words[0] == "Truck":
-                newList.append(Truck(words[1], words[2], words[3], words[4], words[5]))
+                newList.append(Truck(words[1], words[2], int(words[3]), int(words[4]), int(words[5])))
             elif words[0] == "Motorcyle":
-                newList.append(Motorcyle(words[1], words[2], words[3], words[4], words[5]))
+                newList.append(Motorcyle(words[1], words[2], int(words[3]), int(words[4]), words[5]))
     finally:
-        f.close
+        f.close()
     return newList
 
 mylist = [
@@ -104,5 +104,5 @@ for thing in newList:
         print(thing)
 
 for thing in newList:
-    if type(thing) == "Car" & thing.fuel_type == "Electric":
+    if isinstance(thing, Car) and thing.fuel_type == "Electric":
         print(thing)
