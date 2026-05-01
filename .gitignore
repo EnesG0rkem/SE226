@@ -1,0 +1,13 @@
+# macOS sistem dosyaları
+.DS_Store
+
+# C++ Derleme çıktıları (Uzantısı olmayan dosyalar)
+# Not: Bu genellikle Unix/macOS çalıştırılabilir dosyaları içindir
+*
+!*/
+!*.cpp
+!*.h
+!*.hpp
+!*.py
+!*.txt
+!.gitignore

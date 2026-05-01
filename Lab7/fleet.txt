@@ -1,0 +1,6 @@
+Car,V001,Tesla Model 3,2023,Electric,4
+Car,V002,Tesla Model 3,2023,Electric,4
+Truck,V003,Tesla Model 4,2023,0,4
+Truck,V004,Tesla Model 4,2023,0,4
+Motorcyle,V005,Tesla Model 3,2023,250,Sport
+Motorcyle,V006,Tesla Model 3,2023,250,Sport
