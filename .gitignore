@@ -1,14 +1,17 @@
 # macOS sistem dosyaları
 .DS_Store
 
-# C++ Derleme çıktıları (Uzantısı olmayan dosyalar)
-# Not: Bu genellikle Unix/macOS çalıştırılabilir dosyaları içindir
+# Önce her şeyi engelle
 *
+
+# Klasörlerin taranmasına izin ver (Hiyerarşiyi bozmamak için)
 !*/
+
+# Takip edilmesini istediğin dosya türlerini beyaz listeye al
 !*.cpp
 !*.h
 !*.hpp
 !*.py
 !*.txt
+!*.ino
 !.gitignore
-!.ino
